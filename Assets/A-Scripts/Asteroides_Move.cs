@@ -1,10 +1,15 @@
 ﻿using UnityEngine;
 
-public class Asteroides_Move : Move_Base
+public class Asteroides_Move : Entity_Move
 {
     void Start()
     {
         Speed = 2.0f;
+    }
+
+    private void Update()
+    {
+        Move();
     }
 
     protected override void Move()

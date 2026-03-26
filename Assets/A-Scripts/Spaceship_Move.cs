@@ -1,10 +1,15 @@
 ﻿using UnityEngine;
 
-public class Spaceship_Move : Move_Base
+public class Spaceship_Move : Entity_Move
 {
     void Start()
     {
         Speed = 3.0f;
+    }
+
+    private void Update()
+    {
+        Move();
     }
     protected override void Move()
     {
@@ -21,4 +26,6 @@ public class Spaceship_Move : Move_Base
 
         base.Move();
     }
+
+
 }

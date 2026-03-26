@@ -1,16 +1,34 @@
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Bullet_Move : MonoBehaviour
+public class Bullet_Move : Move_Base
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        Speed = 10.0f;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        Move();
+    }
+
+    protected override void Move()
+    {
+        if (rb != null)
+        {
+            // R�initialiser la v�locit� et appliquer une nouvelle force
+            rb.linearVelocity = Vector3.forward * Speed;
+        }
+        else
+        {
+            // Fallback au mouvement par transform si pas de Rigidbody
+            transform.position += Vector3.forward * Speed * Time.deltaTime;
+        }
+
+        // Suppression des balles qui sortent de l'�cran
+        if (transform.position.z > 9) // Chang� de y � z
+        {
+            Destroy(this);
+        }
     }
 }

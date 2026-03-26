@@ -1,28 +1,31 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class PlayerShip : MonoBehaviour
 {
-    // Références au GameManager pour accéder aux données
-    private GameManager gameManager;
 
-    // Variables dupliquées qui créent des dépendances
-    public float speed;
-    public int lives;
+    // Mï¿½thode pour gï¿½rer les collisions avec le joueur
+    //public void HandlePlayerHit(GameObject hitObject)
+    //{
+    //    // Destruction de l'objet qui a touchï¿½ le joueur
+    //    Instantiate(explosionPrefab, hitObject.transform.position, Quaternion.identity);
 
-    void Start()
-    {
-        // Recherche du GameManager dans la scène
-        gameManager = FindObjectOfType<GameManager>();
+    //    if (hitObject.CompareTag("Enemy"))
+    //    {
+    //        Destroy(hitObject);
+    //        enemies.Remove(hitObject);
+    //    }
+    //    else if (hitObject.CompareTag("Asteroid"))
+    //    {
+    //        Destroy(hitObject);
+    //        asteroids.Remove(hitObject);
+    //    }
 
-        // Initialisation des variables
-        speed = gameManager.playerSpeed;
-        lives = gameManager.lives;
-    }
+    //    // Perte d'une vie
+    //    lives--;
 
-    void Update()
-    {
-        // Mise à jour des variables depuis le GameManager
-        speed = gameManager.playerSpeed;
-        lives = gameManager.lives;
-    }
+    //    if (lives <= 0)
+    //    {
+    //        GameOver();
+    //    }
+    //}
 }

@@ -1,13 +1,20 @@
 ﻿using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class Player_Move : Move_Base
 {
+
     private void Start()
     {
         Speed = 5.0f;
     }
 
-    void HandlePlayerInput()
+    private void Update()
+    {
+        Move();
+    }
+
+    protected override void Move()
     {
         // D�placement du joueur
         float horizontalInput = Input.GetAxis("Horizontal");
@@ -39,10 +46,8 @@ public class Player_Move : Move_Base
         playerPos.z = Mathf.Clamp(playerPos.z, -11, -2.5f);
         transform.position = playerPos;
 
-        // Tir
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    GameManager.FireBullet();
-        //}
+        
     }
+
+    
 }

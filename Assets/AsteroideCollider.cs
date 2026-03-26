@@ -16,7 +16,7 @@ public class AsteroidCollider : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             // Le joueur a touché un astéroïde
-            gameManager.HandlePlayerHit(gameObject);
+            //gameManager.HandlePlayerHit(gameObject);
         }
     }
 }
