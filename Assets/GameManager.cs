@@ -3,12 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using static Unity.VisualScripting.Metadata;
 
 public class GameManager : MonoBehaviour
 {
-    [Header("Explosion")]
-    public ExplosionManager explosionManager;
+
 
     // Variables publiques expos�es sans encapsulation
     public int score;
@@ -54,25 +52,7 @@ public class GameManager : MonoBehaviour
         if (powerupMessageText) powerupMessageText.gameObject.SetActive(false);
     }
 
-    public void HandleBulletEnemyCollision(GameObject bullet, GameObject enemy)
-    {
-        // Explosion avec effet de fragmentation
-        if (explosionManager != null)
-        {
-            explosionManager.ExplodeObject(enemy);
-        }
-        else
-        {
-            // Fallback vers l'explosion originale
-            //Instantiate(explosionPrefab, enemy.transform.position, Quaternion.identity);
-        }
-
-        // Destruction de l'ennemi
-        Destroy(enemy, 0.1f); // Court d�lai pour permettre � l'explosion de commencer
-
-        // Destruction de la balle
-        Destroy(bullet);
-    }
+   
 
     void Update()
     {

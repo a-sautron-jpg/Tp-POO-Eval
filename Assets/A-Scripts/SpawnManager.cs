@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class SpawnManager : MonoBehaviour
 {
@@ -53,6 +54,11 @@ public class SpawnManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             FireBullet();
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            gameManager.RestartGame();
         }
     }
 
@@ -114,6 +120,8 @@ public class SpawnManager : MonoBehaviour
 
                 // Ajouter le script de gestion de collision � l'ennemi
                 enemy.AddComponent<EnemyCollider>();
+                enemy.AddComponent<Spaceship_Move>();
+
             }
             else
             {
@@ -128,6 +136,7 @@ public class SpawnManager : MonoBehaviour
 
                 // Ajouter le script de gestion de collision � l'ast�ro�de
                 asteroid.AddComponent<AsteroidCollider>();
+                asteroid.AddComponent<Asteroides_Move>();
             }
 
             nextSpawnTime = Time.time + spawnRate;
@@ -155,7 +164,7 @@ public class SpawnManager : MonoBehaviour
         {
             // Calcule la position avec l'offset horizontal
             Vector3 bulletOffset = new Vector3(startX + (i * gameManager.bulletSpacing), -0.5f, 0.5f);
-            Vector3 spawnPosition = transform.position + bulletOffset;
+            Vector3 spawnPosition = playerShip.transform.position + bulletOffset;
 
             // Instanciation du projectile
             GameObject bullet = Instantiate(bulletPrefab, spawnPosition, Quaternion.identity);
@@ -166,6 +175,8 @@ public class SpawnManager : MonoBehaviour
 
             // Ajouter le script de gestion de collision � la balle
             bullet.AddComponent<BulletCollider>();
+            bullet.AddComponent<Bullet_Move>();
+            bullet.AddComponent<Bullet_Move>().explosionPrefab = (GameObject)Resources.Load("Explode");
         }
 
         // Son de tir

@@ -15,8 +15,8 @@ public class EnemyCollider : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            // Le joueur a touché un ennemi
-            gameManager.HandlePlayerHit(gameObject);
+            //// Le joueur a touché un ennemi
+            //gameManager.HandlePlayerHit(gameObject);
         }
     }
 }

@@ -27,5 +27,12 @@ public class Spaceship_Move : Entity_Move
         base.Move();
     }
 
+    public void SelfDestruct()
+    {
+        // M�thode pour g�rer les collisions avec le joueur
 
+        // Destruction de l'objet qui a touch� le joueur
+        Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+
+    }
 }

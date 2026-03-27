@@ -10,13 +10,5 @@ public class AsteroidCollider : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
     }
 
-    // Utilisons OnCollisionEnter au lieu de OnTriggerEnter
-    void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            // Le joueur a touché un astéroïde
-            //gameManager.HandlePlayerHit(gameObject);
-        }
-    }
+   
 }

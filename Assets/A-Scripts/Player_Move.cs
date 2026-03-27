@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+﻿using NUnit.Framework;
+using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 
-public class Player_Move : Move_Base
+public class Player_Move : Move_Base, IDestructor
 {
 
     private void Start()
@@ -49,5 +50,21 @@ public class Player_Move : Move_Base
         
     }
 
-    
+    // Utilisons OnCollisionEnter au lieu de OnTriggerEnter
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("PowerUp"))
+        {
+            gameManager = FindAnyObjectByType<GameManager>();
+
+            // Le joueur a collecté un power-up
+            gameManager.ApplyPowerUp();
+            Destroy(collision.gameObject);
+        }
+    }
+
+    public void DamageCible(IDestructable cible)
+    {
+        cible.SelfDestruct();
+    }
 }
